@@ -1,21 +1,110 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../public/Moha_tangx logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <title>rest-countries-api-with-color-scheme-switcher-master/index</title>
-</head>
-<body>
-    <nav></nav>
-    <header></header>
-    <main>
-        <h1>hello  world</h1>
-        <button>toggle</button>
-    </main>
-    <footer>
-    </footer>
-    <script src="app.js" ></script>
-</body>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="../public/Moha_tangx logo.png" type="image/x-icon">
+        <title>rest-countries-api-with-color-scheme-switcher-master/index</title>
+    </head>
+
+    <body>
+        <nav>
+            <h3>
+                Where in the world ?
+            </h3>
+            <button class="dark-mode-toggle-btn">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-moon-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+                    </svg>
+                </i>
+                dark mode
+            </button>
+        </nav>
+        <header>
+            <div class="search-container">
+                    <div class="search">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#eee" class="bi bi-search"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </i>
+                        <input type="search" name="search" id="search-input" placeholder="search for a country...">
+                    </div>
+                    <div class="filter">
+                        <div class="select">
+                            filter by region
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <span>Africa</span>
+                            </div>
+                            <div class="option">
+                                <span>Africa</span>
+                            </div>
+                            <div class="option">
+                                <span>Africa</span>
+                            </div>
+                            <div class="option">
+                                <span>Africa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        <main>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-description">
+                        <p class="name">Nigeria</p>
+                        <small class="population">
+                            population: 22,000,000
+                        </small><br>
+                        <small class="region">
+                            region: Africa
+                        </small><br>
+                        <small class="capital">
+                            capital: Abuja
+                        </small>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-description"></div>
+                </div>
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-description"></div>
+                </div>
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-description"></div>
+                </div>
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-description"></div>
+                </div>
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-description"></div>
+                </div>
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-description"></div>
+                </div>
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-description"></div>
+                </div>
+            </div>
+        </main>
+        <script src="app.js"></script>
+    </body>
 </html>

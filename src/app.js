@@ -1,5 +1,7 @@
-// dark-mode toggle
-document.querySelector("button").addEventListener("click", (e) => {
-    e.preventDefault();
-    document.documentElement.classList.toggle("dark");
-})
+async function getData() {
+  let url = "../data.json";
+  let data = await fetch(url);
+  let jsnData = await data.json();
+  console.log(jsnData);
+}
+// getData();
