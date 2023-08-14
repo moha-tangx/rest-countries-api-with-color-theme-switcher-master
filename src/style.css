@@ -7,6 +7,7 @@ box-sizing: border-box;
 text-decoration: none;
 font-family: myfont;
 color: var(--white);
+list-style-type: none;
 }
 :root{
 --Dark-Mode-Elements: hsl(210, 25%, 20%);
@@ -28,11 +29,11 @@ body{
 nav{
     background: var(--Dark-Mode-Elements);
     box-shadow: 2px 0 20px 2px #111;
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     letter-spacing: 2px;
 }
 .dark-mode-toggle-btn{
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     letter-spacing: 2px;
 }
 nav,.search-container{
