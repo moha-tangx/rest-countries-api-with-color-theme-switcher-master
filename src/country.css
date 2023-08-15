@@ -1,0 +1,108 @@
+:root {
+    --Dark-Mode-Elements: hsl(210, 25%, 20%);
+    --VeryDark-Mode-Background: hsl(205, 25%, 15%);
+    --VeryLight-Mode-Text: hsl(200, 15%, 10%);
+    --Light-Mode-Input: hsl(0, 0%, 50%);
+    --Light-Mode-Background: hsl(0, 0%, 95%);
+    --white: hsl(0, 0%, 100%);
+    --rounded: 4px;
+    --corner: .5rem;
+    --light:2px 0 10px 2px hsla(0, 0%, 0%, 0.4);
+}
+
+@font-face {
+    font-family: myfont;
+    src: url(./assets/fonts/font2/static/HankenGrotesk-Medium.ttf);
+}
+.background.dark{
+    background: var(--VeryDark-Mode-Background);
+    color: var(--white);
+}
+.element.dark {
+    background: var(--Dark-Mode-Elements);
+    color: var(--white);
+}
+.back{
+    padding: 4% 0;
+    width: 86%;
+    margin-inline: auto;
+}
+.back>div.arrow-back-btn{
+    border: none;
+    outline: none;
+    padding:1% 2% ;
+    border-radius: var(--rounded);
+    box-shadow: var(--light);
+    cursor: pointer;
+    display: inline-block;
+}
+
+.details{
+    align-items: center;
+    display:flex;
+    justify-content: space-around;
+    margin-inline: auto;
+    width: 86%;
+    flex-wrap: wrap;
+    height: 50svh;
+    gap: 10%;
+}
+
+.details>*{
+    min-width: 300px;
+    flex: 1;
+    height: 100%;
+}
+.left-img{
+    background: linear-gradient(to bottom right, red 30%, purple 70%);
+}
+h1.name{
+    padding-block: 4%;
+    letter-spacing: 3px;
+}
+
+.info{
+    flex-wrap: wrap;
+    display:flex;
+    flex-direction: column;
+    height: 6lh;
+    gap: .2lh;
+}
+ul.info>li{
+    min-width: 50%;
+}
+.border-countries{
+    display:flex;
+    gap: 1rem;
+    margin-top: 5%;
+}
+.border-countries>li{
+    box-shadow: var(--light);
+    padding: 1% 2%;
+    cursor: pointer;
+    border-radius: var(--rounded);
+    box-shadow: var(--light);
+}
+
+/* for phones */
+@media only screen and (width<600px){
+    .info{
+        height: auto;
+    }
+    .info>:nth-child(6){
+        margin-top: 4%;
+    }
+    .border-countries{
+        flex-wrap: wrap;
+    }
+    .left-img{
+        aspect-ratio: 16/9;
+    }
+    .border-countries>label{
+        min-width: 100%;
+        flex: 1;
+    }
+    .border-countries>li{
+        margin: 2% auto;
+    }
+}
