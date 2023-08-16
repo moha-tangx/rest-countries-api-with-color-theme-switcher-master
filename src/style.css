@@ -7,8 +7,8 @@
     text-decoration: none;
     font-family: myfont;
     list-style-type: none;
+    color: inherit;
 }
-
 :root {
     --Dark-Mode-Elements: hsl(200, 25%, 20%);
     --VeryDark-Mode-Background: hsl(205, 25%, 15%);
@@ -33,7 +33,7 @@
 
 .element.dark {
     background: var(--Dark-Mode-Elements);
-    color: var(--white);
+    color: var(--white)!important;
 }
 
 nav.element{
@@ -152,7 +152,7 @@ input#search-input{
     padding: 4% 0;
 }
 
-.select:hover+.options {
+.options.show {
     scale: 1;
     height: auto;
     cursor: pointer;
@@ -160,7 +160,7 @@ input#search-input{
 
 main {
     padding-top: 1px;
-    min-height: 80svh;
+    min-height: 100svh;
 }
 
 main>.cards-container {
@@ -216,4 +216,8 @@ main>.cards-container {
     font-size: 1.4rem;
     font-weight: 400;
     margin-block-end: 5%;
+}
+
+.hide{
+    display: none;
 }
