@@ -46,9 +46,10 @@ nav.element{
 }
 header{
     position: fixed;
-    margin-top:9svh;
+    margin-top:calc(10svh - 2px);
     width: 100%;
 }
+
 .dark-mode-toggle-btn{
     letter-spacing: 2px;
 }
@@ -57,21 +58,12 @@ nav,
 .search-container {
     display: flex;
     justify-content: space-between;
-    padding: 2% 5%;
+    padding:2% 4.5%;
 }
-@media only screen and (width<500px) {
-    .search-container {
-        flex-direction: column;
-    }
 
-    .filter {
-        margin-top: 4%;
-        flex: 1;
-        min-width: 50%;
-    }
-
-    .search {
-        padding: 2% 0;
+@media only screen and (orientation:landscape) {
+    .card{
+        padding-bottom: 15svh;
     }
 }
 
@@ -144,12 +136,12 @@ input#search-input{
     height: 0;
     transition: scale 200ms;
     border-radius: var(--rounded);
-    padding: 0 4%;
+    padding: 4%;
     box-shadow: var(--light);
 }
 
 .option {
-    padding: 4% 0;
+    padding:.5%;
 }
 
 .options.show {
@@ -164,7 +156,7 @@ main {
 }
 
 main>.cards-container {
-    padding-top: 1px;
+    padding: 1px 2%;
     margin-top: 30svh;
     width: 100%;
     align-items: center;
@@ -175,35 +167,40 @@ main>.cards-container {
 }
 
 .card {
-    min-height: fit-content;
-    min-width: 250px;
-    max-width: 100svw;
-    width: 15svw;
+    max-height: 50svh;
+    width: clamp(250px,15svw,100svw);
     margin-bottom: 4%;
     border-radius: var(--corner);
     cursor: pointer;
     box-shadow: var(--light);
+    padding: 0;
+    text-transform: capitalize;
 }
 
-.card-img,
+
 .card-description {
     width: 100%;
-    height: 25svh;
+    height: 60%;
     border-radius: inherit;
 }
 
 .card-img {
+    aspect-ratio: 16/9;
+    height:40%;
+    border-radius: inherit;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     background: linear-gradient(to bottom right, red 30%, purple 70%);
 }
 
 .card-img>img{
-    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
     object-fit: cover;
     height: 100%;
     border-radius: inherit;
     z-index: 3;
+    border-bottom: 1px solid var(--Light-Mode-Input);
 }
 .card-description {
     padding: 5%;
@@ -220,4 +217,44 @@ main>.cards-container {
 
 .hide{
     display: none;
+}
+
+@media only screen and (width<500px) {
+    .card {
+        width: clamp(300px, 15svw, 100svw);
+    }
+    .card-description{
+        padding-bottom: 20%;
+    }
+
+    header {
+        margin-top: 8svh;
+    }
+
+    .search {
+        padding-block: 3%;
+    }
+
+    .search-container {
+        flex-direction: column;
+        margin-top: clamp(20px, 6%, 250px);
+        letter-spacing: 2px;
+        font-weight: normal;
+        font-size: larger;
+    }
+
+    nav {
+        text-align: center;
+        font-size: .9rem;
+    }
+
+    .filter {
+        margin-top: 4%;
+        flex: 1;
+        min-width: 50%;
+    }
+
+    .search {
+        padding: 2% 0;
+    }
 }

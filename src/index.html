@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link rel="shortcut icon" href="../public/Moha_tangx logo.png" type="image/x-icon">
-        <title>rest-countries-api-with-color-scheme-switcher-master/index</title>
-    </head>
-    <body>
-        <nav class="element">
-            <h3>
-                Where in the world ?
-            </h3>
-            <div class="dark-mode-toggle-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-moon-fill" viewBox="0 0 16 16" >
-                        <path
-                            d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
-                    </svg>
-                <span>
-                    Dark Mode
-                </span>
-            </div>
-        </nav>
-        <header class="background">
-            <div class="search-container">
-                    <div class="search element">
-                        <i>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#eee" class="bi bi-search"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                            </svg>
-                        </i>
-                        <input type="search" name="search" id="search-input" placeholder="search for a country..." spellcheck="false">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../public/Moha_tangx logo.png" type="image/x-icon">
+    <title>rest-countries-api-with-color-scheme-switcher-master/index</title>
+</head>
+<body>
+    <nav class="element">
+        <h3>
+            Where in the world ?
+        </h3>
+        <div class="dark-mode-toggle-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-moon-fill" viewBox="0 0 16 16" >
+                    <path
+                        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+                </svg>
+            <span>
+                Dark Mode
+            </span>
+        </div>
+    </nav>
+    <header class="background">
+        <div class="search-container">
+                <div class="search element">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#aaa" class="bi bi-search"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </i>
+                    <input type="search" name="search" id="search-input" placeholder="search for a country..." spellcheck="false">
+                </div>
+                <div class="filter">
+                    <div class="select element">
+                        filter by region
                     </div>
-                    <div class="filter">
-                        <div class="select element">
-                            filter by region
+                    <div class="options element">
+                        <div class="option">
+                            <option value="Africa">Africa</option>
                         </div>
-                        <div class="options element">
-                            <div class="option">
-                                <option value="Africa">Africa</option>
-                            </div>
-                            <div class="option">
-                                <option value="Americas">America</option>
-                            </div>
-                            <div class="option">
-                                <option value="Asia">Asia</option>
-                            </div>
-                            <div class="option">
-                                <option value="Europe">Europe</option>
-                            </div>
-                            <div class="option">
-                                <option value="Oceania">Ocenia</option>
-                            </div>
+                        <div class="option">
+                            <option value="Americas">America</option>
+                        </div>
+                        <div class="option">
+                            <option value="Asia">Asia</option>
+                        </div>
+                        <div class="option">
+                            <option value="Europe">Europe</option>
+                        </div>
+                        <div class="option">
+                            <option value="Oceania">Ocenia</option>
                         </div>
                     </div>
                 </div>
-            </header>
-        <main class="background">
-            <div class="cards-container">
-                <!-- <div class="card element">
+            </div>
+    </header>
+    <main class="background">
+        <div class="cards-container"> 
+            <template>
+                <div class="card element">
                     <div class="card-img"></div>
                     <div class="card-description">
                         <p class="name">Nigeria</p>
@@ -76,9 +76,10 @@
                             capital: Abuja
                         </small>
                     </div>
-                </div> -->
-            </div>
-        </main>
-        <script src="app.js"></script>
-    </body>
+                </div>
+            </template>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
 </html>
