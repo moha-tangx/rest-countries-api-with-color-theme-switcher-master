@@ -200,8 +200,3 @@ loadIndex && homePageActivites();
 // getting the data stored in the local storage to display the data on the country homepage...
 let myCountry = JSON.parse(localStorage.getItem("mycountry"));
 !loadIndex && createCountryPage(myCountry);
-
-
-
-
-
