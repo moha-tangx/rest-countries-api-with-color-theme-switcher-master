@@ -31,7 +31,7 @@ function createCountryPage(country) {
   const getNativeName = country.name.nativeName.eng;
   const getcurrencies = country.currencies;
   const getLanguages = country.languages;
-  
+
   // for  bordersList will return an arry
   let bordersList;
 
@@ -42,33 +42,34 @@ function createCountryPage(country) {
   let currencies;
   let languages;
 
-//normalizing nativeName
+  //normalizing nativeName
   {
     typeof getNativeName == "object"
       ? (nativeName = getNativeName.official)
       : (nativeName = getNativeName);
-    typeof getNativeName == "undefined" && (nativeNameObj = country.name.nativeName);
+    typeof getNativeName == "undefined" &&
+      (nativeNameObj = country.name.nativeName);
     for (const key in nativeNameObj) {
       const element = nativeNameObj[key];
-      nativeName = element.common
+      nativeName = element.common;
     }
   }
-// normalizing borders data
+  // normalizing borders data
   {
     typeof getBorders == "object"
       ? (bordersList = getBorders.map((border) => `<li>${border}</li>`))
       : (borders = getBorders);
     typeof borders == "string" && (borders = getBorders);
     typeof borders == "undefined" && (borders = "no border");
-    typeof bordersList == "object" && (borders = bordersList.join(""))
-  };
-
+    typeof bordersList == "object" && (borders = bordersList.join(""));
+  }
+  // cca3
   // normalizing currencies
   {
-    currencies = currencies
-  };
+    currencies = currencies;
+  }
 
-  // normalzing languages 
+  // normalzing languages
   {
     for (let key in getLanguages) {
       let lang = getLanguages[key];
@@ -81,10 +82,10 @@ function createCountryPage(country) {
     for (const currency in getcurrencies) {
       if (Object.hasOwnProperty.call(getcurrencies, currency)) {
         const element = getcurrencies[currency];
-        currencies=element.name
+        currencies = element.name;
       }
     }
-  };
+  }
   countryPage.innerHTML = `
               <div class="left-img">
                   <img src=${country.flag.svg} alt=${country.flags.alt}>
