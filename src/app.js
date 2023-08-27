@@ -20,10 +20,11 @@ const filterToggle = () => {
   const options = document.querySelector(".options");
   filterBtn.addEventListener("click", () => options.classList.toggle("show"));
 };
+
 // checking if we are on index page to load the filter toggle functionality or not...
 loadIndex && filterToggle();
 
-function createCountryPage(country) {
+async function createCountryPage(country) {
   const countryPage = document.querySelector(".details");
 
   // value of counties attribute
@@ -32,9 +33,6 @@ function createCountryPage(country) {
   const getcurrencies = country.currencies;
   const getLanguages = country.languages;
 
-  // for  bordersList will return an arry
-  let bordersList;
-
   // declaration before assigning to normalized data
   let borders;
   let nativeName;
@@ -42,7 +40,10 @@ function createCountryPage(country) {
   let currencies;
   let languages;
 
-  //normalizing nativeName
+  // for if get borders returns an array
+  let bordersList = [];
+
+  //normalizing nativeName...
   {
     typeof getNativeName == "object"
       ? (nativeName = getNativeName.official)
@@ -54,21 +55,6 @@ function createCountryPage(country) {
       nativeName = element.common;
     }
   }
-  // normalizing borders data
-  {
-    typeof getBorders == "object"
-      ? (bordersList = getBorders.map((border) => `<li>${border}</li>`))
-      : (borders = getBorders);
-    typeof borders == "string" && (borders = getBorders);
-    typeof borders == "undefined" && (borders = "no border");
-    typeof bordersList == "object" && (borders = bordersList.join(""));
-  }
-  // cca3
-  // normalizing currencies
-  {
-    currencies = currencies;
-  }
-
   // normalzing languages
   {
     for (let key in getLanguages) {
@@ -86,6 +72,23 @@ function createCountryPage(country) {
       }
     }
   }
+  
+  // normalizing borders...
+  {
+    let countries = await getData();
+  let list = await countries.filter((country) =>
+    typeof getBorders == "object" &&
+    getBorders.includes(country.cca3)
+  );
+  for (let country in list) {
+    let element = list[country];
+    bordersList.push(element.name.common);
+  }
+  typeof getBorders == "undefined"
+    ? (borders = "no borders")
+      : (borders = bordersList.map((b) => `<li>${b}</li>`).join(" "));
+  }
+
   countryPage.innerHTML = `
               <div class="left-img">
                   <img src=${country.flag.svg} alt=${country.flags.alt}>
@@ -130,7 +133,7 @@ async function getData() {
   }
 }
 // create cardfrom the data gotten from  the Api...
-async function createCard(country) {
+function createCard(country) {
   const cardsContainer = document.querySelector(".cards-container");
   const card = document.createElement("div");
   card.classList = "card element";
@@ -158,13 +161,12 @@ async function createCard(country) {
   });
 }
 const homePageActivites = () => {
-  const renderCards = async () => {
+  (async () => {
     const countries = await getData();
     countries.forEach((country) => {
       loadIndex && createCard(country);
     });
-  };
-  renderCards();
+  })();
 
   // filter by region selection handling
   const regions = document.querySelectorAll("option");
@@ -195,9 +197,33 @@ const homePageActivites = () => {
   });
 };
 
-// checking to see if we are  on the home page to exaecute(call()) the functions associated with the homePage...
+// checking to see if we are  on the home page to exacute(call()) the functions associated with the homePage...
 loadIndex && homePageActivites();
 
 // getting the data stored in the local storage to display the data on the country homepage...
 let myCountry = JSON.parse(localStorage.getItem("mycountry"));
 !loadIndex && createCountryPage(myCountry);
+
+// testing sake
+{
+  (() => {
+    let list = [];
+    let myval;
+
+    (async function inner() {
+      let myList = [1, 2, 3, 4, 5, 6];
+      list = myList.slice();
+      myval = list.map((n) => `<ul>${n}</ul>`).join(" ");
+    })();
+
+    console.log();
+  })();
+
+  let man = async (n, expo) => n ** expo;
+  // console.log(man(2, 3));
+
+  function woman(n, expo) {
+    return n ** expo;
+  }
+  // console.log(woman(3,4));
+}
