@@ -1,0 +1,271 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: myfont;
+  list-style-type: none;
+  color: inherit;
+  user-select: none;
+}
+
+:root {
+  --Dark-Mode-Elements: hsl(200, 25%, 20%);
+  --VeryDark-Mode-Background: hsl(205, 25%, 15%);
+  --VeryLight-Mode-Text: hsl(200, 15%, 10%);
+  --Light-Mode-Input: hsl(0, 0%, 50%);
+  --Light-Mode-Background: hsl(0, 0%, 95%);
+  --white: hsl(0, 0%, 100%);
+  --rounded: 5px;
+  --corner: 0.5rem;
+  --light: 2px 0 10px 2px hsla(0, 0%, 0%, 0.4);
+}
+
+@font-face {
+  font-family: myfont;
+  src: url(./fonts/font1/MuseoModerno-VariableFont_wght.ttf);
+}
+
+.background.dark {
+  background: var(--VeryDark-Mode-Background);
+  color: var(--white);
+}
+
+.element.dark {
+  background: var(--Dark-Mode-Elements);
+  color: var(--white) !important;
+}
+
+nav.element {
+  letter-spacing: 2px;
+  box-shadow: var(--light);
+  background: var(--white);
+  position: fixed;
+  width: 100%;
+  padding-block: 3svh;
+}
+
+header {
+  position: fixed;
+  margin-top: calc(10svh - 2px);
+  width: 100%;
+}
+
+.dark-mode-toggle-btn {
+  letter-spacing: 2px;
+}
+
+nav,
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 2% 4.5%;
+}
+
+@media only screen and (orientation: landscape) {
+  .card {
+    padding-bottom: 15svh;
+  }
+}
+
+.dark-mode-toggle-btn {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.search {
+  min-width: 45%;
+  border-radius: var(--corner);
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: var(--light);
+  background: var(--white);
+}
+
+input#search-input {
+  color: var(--Light-Mode-Input);
+  cursor: pointer;
+}
+
+.search > * {
+  padding-inline: 4%;
+}
+
+.search-container > .search input {
+  border: none;
+  border-radius: inherit;
+  background: transparent;
+  flex: 1;
+  text-indent: 10px;
+}
+
+.search input:focus {
+  border: none;
+  outline: none;
+}
+
+.search:has(input:focus) {
+  outline: 2px solid #fff;
+}
+
+.filter {
+  position: relative;
+  width: clamp(20ch, 20%, 100px);
+  cursor: pointer;
+}
+
+.filter > .select {
+  position: relative;
+  box-shadow: var(--light);
+  width: 100%;
+  margin-bottom: 5%;
+  border-radius: var(--rounded);
+  padding: 6%;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.options {
+  background: var(--white);
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  scale: 0;
+  height: 0;
+  transition: scale 200ms;
+  border-radius: var(--rounded);
+  padding: 4%;
+  box-shadow: var(--light);
+}
+
+.option {
+  padding: 0.5%;
+}
+
+.options.show {
+  scale: 1;
+  height: auto;
+  cursor: pointer;
+}
+
+main {
+  padding-top: 1px;
+  min-height: 100svh;
+}
+
+main > .cards-container {
+  padding: 1px 2%;
+  margin-top: 30svh;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+
+.card {
+  width: clamp(250px, 15svw, 100svw);
+  margin-bottom: 4%;
+  border-radius: var(--corner);
+  cursor: pointer;
+  box-shadow: var(--light);
+  padding: 0;
+  text-transform: capitalize;
+}
+
+.card-description {
+  width: 100%;
+  height: 60%;
+  border-radius: inherit;
+}
+
+.card-img {
+  aspect-ratio: 16/9;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: linear-gradient(to bottom right, red 30%, purple 70%);
+}
+
+.card-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  z-index: 3;
+  border-bottom: 1px solid var(--Light-Mode-Input);
+}
+
+.card-description {
+  padding: 5%;
+  font-size: 1rem;
+  font-weight: lighter;
+  left: 3px;
+}
+
+.card-description .name {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-block-end: 5%;
+}
+
+.hide {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .cards-container {
+    margin-top: 25vh;
+  }
+
+  nav {
+    padding: 2vh 2%;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .card {
+    width: clamp(300px, 15svw, 80svw);
+    min-width: 250px;
+    max-width: 80%;
+  }
+
+  .card-description {
+    padding-bottom: 20%;
+  }
+
+  header {
+    margin-top: 8svh;
+  }
+
+  .search {
+    padding: 3% 0;
+    margin-top: 4vh;
+  }
+
+  .search-container {
+    flex-direction: column;
+    margin-top: clamp(20px, 6%, 250px);
+    letter-spacing: 2px;
+    font-weight: normal;
+    font-size: larger;
+  }
+
+  .filter {
+    margin-top: 4%;
+    flex: 1;
+    min-width: 50%;
+  }
+
+  .options {
+    padding: 0;
+  }
+}
+
+/* written by moha tangx */

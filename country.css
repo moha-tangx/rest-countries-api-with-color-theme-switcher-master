@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: myfont;
-    src: url(./assets/fonts/font2/static/HankenGrotesk-Medium.ttf);
+    src: url(./fonts/font2/HankenGrotesk-VariableFont_wght.ttf);
 }
 
 .background.dark {
@@ -46,13 +46,13 @@ main {
 }
 
 .details {
-    align-items: center;
+    user-select: none;
     display: flex;
     justify-content: space-around;
     margin-inline: auto;
     width: 86%;
     flex-wrap: wrap;
-    height: 50svh;
+    min-height: fit-content;
     gap: 10%;
     padding-bottom: 5svh;
 }
@@ -60,12 +60,13 @@ main {
 .details>* {
     min-width: 300px;
     flex: 1;
-    height: 100%;
+    min-height: 100%;
 }
 
 .left-img {
-    background: linear-gradient(to bottom right, red 30%, purple 70%);
     aspect-ratio: 16/9;
+    /* background: linear-gradient(to bottom right, red 30%, purple 70%); */
+    box-shadow: 2px 2px 10px 1px #aaa;
 }
 
 .left-img img {
@@ -90,6 +91,7 @@ h1.name {
 ul.info>li {
     min-width: 50%;
     text-transform: capitalize;
+    max-width: 30ch;
 }
 
 .border-countries {
@@ -97,6 +99,7 @@ ul.info>li {
     gap: 1rem;
     margin-block: 5%;
     border-bottom: 5svh solid transparent;
+    flex-wrap: wrap;
 }
 
 .border-countries>li {
@@ -108,15 +111,16 @@ ul.info>li {
 }
 
 /* for phones */
-@media only screen and (width<600px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
     main {
         padding-top: 15%;
     }
 
-    .left-img{
+    .left-img {
         aspect-ratio: 16/9;
         max-height: 25svh;
     }
+
     .info {
         height: auto;
     }
@@ -128,9 +132,9 @@ ul.info>li {
     .border-countries {
         flex-wrap: wrap;
         padding-bottom: 5%;
-}
+    }
 
-.left-img { 
+    .left-img {
         aspect-ratio: 16/9;
     }
 
@@ -138,13 +142,58 @@ ul.info>li {
         min-width: 100%;
         flex: 1;
     }
-    
+
     .border-countries>li {
         margin: 2% auto -3%;
         flex: 1;
         min-width: 30%;
         text-align: center;
     }
+
+    .border-countries>div {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:500px) {
+    main {
+        padding-top: 15%;
+    }
+
+    .left-img {
+        aspect-ratio: 16/9;
+        max-height: 25svh;
+    }
+
+    .info {
+        height: auto;
+    }
+
+    .info>:nth-child(6) {
+        margin-top: 4%;
+    }
+
+    .border-countries {
+        flex-wrap: wrap;
+        padding-bottom: 5%;
+    }
+
+    .left-img {
+        aspect-ratio: 16/9;
+    }
+
+    .border-countries>label {
+        min-width: 100%;
+        flex: 1;
+    }
+
+    .border-countries>li {
+        margin: 2% auto -3%;
+        flex: 1;
+        min-width: 30%;
+        text-align: center;
+    }
+
     .border-countries>div {
         width: 100%;
     }
@@ -152,11 +201,13 @@ ul.info>li {
 
 @media only screen and (orientation:landscape) {
     main {
-            padding: 5% 1%;
-        }
-    .left-img{
+        padding: 5% 1%;
+    }
+
+    .left-img {
         max-width: 60%;
     }
+
     .border-countries {
         padding-bottom: 5%;
     }

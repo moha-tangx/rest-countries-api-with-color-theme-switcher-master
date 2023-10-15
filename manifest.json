@@ -1,0 +1,15 @@
+{
+  "name": "world countries",
+  "short_name": "countries",
+  "icons": [
+    {
+      "src": "./public/Moha_tangx logo.png",
+      "sizes": "100x100",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#808080",
+  "background_color": "#808080",
+  "display": "standalone",
+  "orientation": "portrait"
+}

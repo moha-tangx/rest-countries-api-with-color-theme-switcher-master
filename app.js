@@ -1,4 +1,5 @@
 "use strict";
+
 // !navigator.onLine && alert("you seem to be offline please check your connection and try again")
 
 // checkig our url to see if we are on the homepage..
@@ -11,7 +12,12 @@ const loadIndex = !location.pathname.includes("country");
     const elements = document.querySelectorAll(".element,.background");
     elements.forEach((element) => element.classList.toggle("dark"));
   };
-  darkModeBtn.addEventListener("click", () => toggleDarkMode());
+  darkModeBtn.addEventListener("click", () => {
+    toggleDarkMode();
+  });
+  //sessionStorage.setItem("is-dark",true);
+  // let isDark = sessionStorage.getItem("is-dark");
+  // isDark && toggleDarkMode()
 }
 
 // filter by region toggle button open & close...
@@ -24,6 +30,7 @@ const filterToggle = () => {
 // checking if we are on index page to load the filter toggle functionality or not...
 loadIndex && filterToggle();
 
+// creating countries page
 async function createCountryPage(country) {
   const countryPage = document.querySelector(".details");
 
@@ -72,26 +79,26 @@ async function createCountryPage(country) {
       }
     }
   }
-  
+
   // normalizing borders...
   {
     let countries = await getData();
-  let list = await countries.filter((country) =>
-    typeof getBorders == "object" &&
-    getBorders.includes(country.cca3)
-  );
-  for (let country in list) {
-    let element = list[country];
-    bordersList.push(element.name.common);
-  }
-  typeof getBorders == "undefined"
-    ? (borders = "no borders")
+    let list = await countries.filter(
+      (country) =>
+        typeof getBorders == "object" && getBorders.includes(country.cca3)
+    );
+    for (let country in list) {
+      let element = list[country];
+      bordersList.push(element.name.common);
+    }
+    typeof getBorders == "undefined"
+      ? (borders = "no borders")
       : (borders = bordersList.map((b) => `<li>${b}</li>`).join(" "));
   }
 
   countryPage.innerHTML = `
               <div class="left-img">
-                  <img src=${country.flag.svg} alt=${country.flags.alt}>
+                  <img src=${country.flags.svg} loading="eager" alt=${country.flags.alt}>
               </div>
               <div class="right-text">
                   <h1 class="name">${country.name.official}</h1>
@@ -106,9 +113,9 @@ async function createCountryPage(country) {
                       <li>languages:${languages}</li>
                   </ul>
                   <ul class="border-countries ">
-                 <div>
-                   border countries:
-                 </div> 
+                  <div>
+                    border countries:
+                  </div> 
                   ${borders}
                   </ul>
               </div>`;
@@ -184,6 +191,7 @@ const homePageActivites = () => {
   });
 
   // search
+
   const input = document.querySelector("input");
   input.addEventListener("input", (e) => {
     const inputValue = e.target.value.trim().toLowerCase();
@@ -203,27 +211,3 @@ loadIndex && homePageActivites();
 // getting the data stored in the local storage to display the data on the country homepage...
 let myCountry = JSON.parse(localStorage.getItem("mycountry"));
 !loadIndex && createCountryPage(myCountry);
-
-// testing sake
-{
-  (() => {
-    let list = [];
-    let myval;
-
-    (async function inner() {
-      let myList = [1, 2, 3, 4, 5, 6];
-      list = myList.slice();
-      myval = list.map((n) => `<ul>${n}</ul>`).join(" ");
-    })();
-
-    console.log();
-  })();
-
-  let man = async (n, expo) => n ** expo;
-  // console.log(man(2, 3));
-
-  function woman(n, expo) {
-    return n ** expo;
-  }
-  // console.log(woman(3,4));
-}
