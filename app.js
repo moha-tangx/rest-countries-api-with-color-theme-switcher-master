@@ -1,5 +1,4 @@
 "use strict";
-
 // !navigator.onLine && alert("you seem to be offline please check your connection and try again")
 
 // checkig our url to see if we are on the homepage..
@@ -15,12 +14,13 @@ const loadIndex = !location.pathname.includes("country");
   darkModeBtn.addEventListener("click", () => {
     toggleDarkMode();
   });
+  // FIXME:
   //sessionStorage.setItem("is-dark",true);
   // let isDark = sessionStorage.getItem("is-dark");
   // isDark && toggleDarkMode()
 }
 
-// filter by region toggle button open & close...
+// filter by region toggle button -- open & close...
 const filterToggle = () => {
   const filterBtn = document.querySelector(".select");
   const options = document.querySelector(".options");
@@ -35,17 +35,13 @@ async function createCountryPage(country) {
   const countryPage = document.querySelector(".details");
 
   // value of counties attribute
-  const getBorders = country.borders;
-  const getNativeName = country.name.nativeName.eng;
-  const getcurrencies = country.currencies;
-  const getLanguages = country.languages;
+  const getBorders = country.borders,
+    getNativeName = country.name.nativeName.eng,
+    getcurrencies = country.currencies,
+    getLanguages = country.languages;
 
   // declaration before assigning to normalized data
-  let borders;
-  let nativeName;
-  let nativeNameObj;
-  let currencies;
-  let languages;
+  let borders, nativeName, nativeNameObj, currencies, languages;
 
   // for if get borders returns an array
   let bordersList = [];
@@ -64,8 +60,8 @@ async function createCountryPage(country) {
   }
   // normalzing languages
   {
-    for (let key in getLanguages) {
-      let lang = getLanguages[key];
+    for (const key in getLanguages) {
+      const lang = getLanguages[key];
       languages = lang;
     }
   }
@@ -81,8 +77,8 @@ async function createCountryPage(country) {
   }
 
   // normalizing borders...
+  let countries = await getData();
   {
-    let countries = await getData();
     let list = await countries.filter(
       (country) =>
         typeof getBorders == "object" && getBorders.includes(country.cca3)
@@ -93,7 +89,9 @@ async function createCountryPage(country) {
     }
     typeof getBorders == "undefined"
       ? (borders = "no borders")
-      : (borders = bordersList.map((b) => `<li>${b}</li>`).join(" "));
+      : (borders = bordersList
+          .map((b) => `<li class="border" >${b}</li>`)
+          .join(" "));
   }
 
   countryPage.innerHTML = `
@@ -115,10 +113,20 @@ async function createCountryPage(country) {
                   <ul class="border-countries ">
                   <div>
                     border countries:
-                  </div> 
+                  </div class="border"> 
                   ${borders}
                   </ul>
               </div>`;
+  const CountryBorders = document.querySelectorAll(".border");
+  CountryBorders.forEach((b) =>
+    b.addEventListener("click", (e) => {
+      let borderCountry = e.target.textContent;
+      const country = countries.filter(
+        (c) => c.name.common == borderCountry
+      )[0];
+      createCountryPage(country);
+    })
+  );
 }
 
 // getting data from the API...
@@ -130,9 +138,7 @@ async function getData() {
     let jsnData = await data.json();
     return jsnData;
   } catch (error) {
-    // alert(
-    //   ` check your connection and try again`
-    // );
+    // alert(`something went wrong ${error.message}`);
     // console.log(error);
     let data = await fetch(localUrl);
     let jsnData = await data.json();
@@ -177,6 +183,7 @@ const homePageActivites = () => {
 
   // filter by region selection handling
   const regions = document.querySelectorAll("option");
+
   regions.forEach((region) => {
     const continent = region.value;
     region.parentElement.addEventListener("click", () => {
@@ -193,6 +200,7 @@ const homePageActivites = () => {
   // search
 
   const input = document.querySelector("input");
+
   input.addEventListener("input", (e) => {
     const inputValue = e.target.value.trim().toLowerCase();
     const cards = document.querySelectorAll(".card");
